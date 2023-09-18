@@ -6,7 +6,9 @@ param (
 $resourceGroupName = "my-automated-vm_group"
 $vmName = "my-automated-vm"
 
-Connect-AzAccount -Identity
+$secpasswd = ConvertTo-SecureString $clientSecret -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential ($clientId, $secpasswd)
+Connect-AzAccount -ServicePrincipal -Tenant $tenantId -Credential $credential -Subscription $subscriptionId
 
 $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
 
