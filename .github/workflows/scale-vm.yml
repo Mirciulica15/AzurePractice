@@ -19,10 +19,11 @@ jobs:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up PowerShell
-        uses: actions/setup-powershell@v2
-        with:
-          pwsh-version: '7.x'
+        uses: microsoft/setup-powershell@v1
 
       - name: Run PowerShell script
         run: powershell.exe -File vm-scaling.ps1 -newVmSize 'Standard_B1ms'
