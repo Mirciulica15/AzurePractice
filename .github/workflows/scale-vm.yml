@@ -24,9 +24,11 @@ jobs:
 
       - name: Install Azure PowerShell Module
         run: Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
+        shell: pwsh
 
       - name: Import Azure PowerShell Module
         run: Import-Module Az
+        shell: pwsh
 
       - name: Run PowerShell script
         run: |
