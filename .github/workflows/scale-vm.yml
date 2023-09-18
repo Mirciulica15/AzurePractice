@@ -22,6 +22,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install Azure PowerShell Module
+        run: Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
+
+      - name: Import Azure PowerShell Module
+        run: Import-Module Az
+
       - name: Run PowerShell script
         run: |
           $clientId = $env:AZURE_CLIENT_ID
