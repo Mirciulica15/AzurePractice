@@ -7,6 +7,10 @@ on:
     branches: [ "main" ]
 
   workflow_dispatch:
+    inputs:
+      newVmSize:
+        description: 'New VM Size'
+        required: true
 
 jobs:
   scale:
@@ -36,5 +40,6 @@ jobs:
           $clientSecret = $env:AZURE_CLIENT_SECRET
           $tenantId = $env:AZURE_TENANT_ID
           $subscriptionId = $env:AZURE_SUBSCRIPTION_ID
-          ./vm-scaling.ps1 -newVmSize 'Standard_B1ms'
+          $newVmSize = $env:INPUT_NEWVMSIZE
+          ./vm-scaling.ps1 -newVmSize $newVmSize
         shell: pwsh
