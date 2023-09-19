@@ -21,8 +21,8 @@ jobs:
       AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      RESOURCE_GROUP_NAME: ${{ env.RESOURCE_GROUP_NAME }}
-      VM_NAME: ${{ env.VM_NAME }}
+      RESOURCE_GROUP_NAME: ${{ vars.RESOURCE_GROUP_NAME }}
+      VM_NAME: ${{ vars.VM_NAME }}
     
     steps:
       - name: Checkout code
