@@ -41,5 +41,6 @@ jobs:
           $tenantId = $env:AZURE_TENANT_ID
           $subscriptionId = $env:AZURE_SUBSCRIPTION_ID
           $newVmSize = $env:INPUT_NEWVMSIZE
+          Write-Host "newVmSize: $newVmSize"
           ./vm-scaling.ps1 -newVmSize $newVmSize
         shell: pwsh
