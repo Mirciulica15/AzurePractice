@@ -40,5 +40,5 @@ jobs:
           $clientSecret = $env:AZURE_CLIENT_SECRET
           $tenantId = $env:AZURE_TENANT_ID
           $subscriptionId = $env:AZURE_SUBSCRIPTION_ID
-          ./vm-scaling.ps1 -newVmSize $INPUT_NEWVMSIZE
+          ./vm-scaling.ps1 -newVmSize ${{ github.event.inputs.newVmSize }}
         shell: pwsh
