@@ -21,6 +21,8 @@ jobs:
       AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      RESOURCE_GROUP_NAME: ${{ RESOURCE_GROUP_NAME }}
+      VM_NAME: ${{ VM_NAME }}
     
     steps:
       - name: Checkout code
@@ -35,10 +37,5 @@ jobs:
         shell: pwsh
 
       - name: Run PowerShell script
-        run: |
-          $clientId = $env:AZURE_CLIENT_ID
-          $clientSecret = $env:AZURE_CLIENT_SECRET
-          $tenantId = $env:AZURE_TENANT_ID
-          $subscriptionId = $env:AZURE_SUBSCRIPTION_ID
-          ./vm-scaling.ps1 -newVmSize ${{ github.event.inputs.newVmSize }}
+        run: ./vm-scaling.ps1 -newVmSize ${{ github.event.inputs.newVmSize }}
         shell: pwsh
