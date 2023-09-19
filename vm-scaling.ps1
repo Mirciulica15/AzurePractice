@@ -3,13 +3,14 @@ param (
     [string] $newVmSize
 )
 
-$resourceGroupName = "my-automated-vm_group"
-$vmName = "my-automated-vm"
+$resourceGroupName = $env:RESOURCE_GROUP_NAME
+$vmName = $env:VM_NAME
 
 $clientId = $env:AZURE_CLIENT_ID
 $clientSecret = $env:AZURE_CLIENT_SECRET
 $tenantId = $env:AZURE_TENANT_ID
 $subscriptionId = $env:AZURE_SUBSCRIPTION_ID
+
 $secpasswd = ConvertTo-SecureString $clientSecret -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($clientId, $secpasswd)
 Connect-AzAccount -ServicePrincipal -Tenant $tenantId -Credential $credential -Subscription $subscriptionId
